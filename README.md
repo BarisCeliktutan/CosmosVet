@@ -1,4 +1,4 @@
-"# Cosmos Vet"
+Cosmos Vet
 Cosmos Vet provides several key features to help veterinary clinic owners manage their clinic efficiently.
 Client and Pet Management: Keep track of client information including contact details, pet ownership, and vaccinations. Easily add, update, or remove records 
 Vaccination and Check-up Tracking: To make sure not to miss an important vaccination or check-up appointment, Cosmos Vet allows user to schedule and manage upcoming appointments for each pet, ensuring their health is taken care of in a timely manner.
