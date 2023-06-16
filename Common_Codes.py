@@ -46,6 +46,15 @@ class Common:
     def set_phone_code(self, tool, action):
         tool.setText(action.sender().text().split("(")[1][:-1])
 
+    def address_format(self, ad):
+        address = ""
+        for i in range(len(ad)):
+            if ad[i] != "":
+                address += f'{ad[i].replace(", ", "")}, '
+        if address[-2:] == ", ":
+            address = address[:-2]
+        return address
+
     def user_info(self, u):
         global user
         user = u

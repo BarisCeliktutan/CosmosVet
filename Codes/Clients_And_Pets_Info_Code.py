@@ -163,14 +163,7 @@ class ClientsAndPetsInfo(QWidget):
         # self.cl_pet_info_win.dtBirthday.setDate(self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["DOB"]) ## DATE OF LAST VISIT?
         self.cl_pet_info_win.dtEntry.setDate(self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["DATE_OF_ENTRY"])
         self.cl_pet_info_win.entTypeOfClient.setText(self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["TYPE_OF_CLIENT"])
-        ad = self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["ADDRESS"].split("---")
-        address = ""
-        for i in range(len(ad)):
-            if ad[i] != "":
-                address += f'{ad[i].replace(", ", "")}, '
-        if address[-2:] == ", ":
-            address = address[:-2]
-        self.cl_pet_info_win.entAddress.setText(address)
+        self.cl_pet_info_win.entAddress.setText(Common().address_format(self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["ADDRESS"].split("---")))
         self.cl_pet_info_win.entMail.setText(self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["MAIL"])
         self.cl_pet_info_win.entReference.setText(self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["REFERENCE"])
         self.cl_pet_info_win.dtBirthday.setDate(self.clients[self.cl_pet_info_win.tbwClients.currentRow()]["DOB"])

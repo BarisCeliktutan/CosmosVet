@@ -816,7 +816,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="enEMail">
+   <widget class="QLineEdit" name="entEMail">
     <property name="geometry">
      <rect>
       <x>138</x>
@@ -1289,7 +1289,7 @@
   <tabstop>entMobile</tabstop>
   <tabstop>entReference</tabstop>
   <tabstop>entOtherPhones</tabstop>
-  <tabstop>enEMail</tabstop>
+  <tabstop>entEMail</tabstop>
   <tabstop>entDOB</tabstop>
   <tabstop>entPetName</tabstop>
   <tabstop>entBreed</tabstop>

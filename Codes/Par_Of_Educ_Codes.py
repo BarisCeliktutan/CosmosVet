@@ -28,19 +28,23 @@ class ParOfEduc(QWidget):
         self.par_of_educ_win.toolbShow.setPopupMode(QToolButton.InstantPopup)
         self.par_of_educ_win.tbwClients.setColumnHidden(0, True)
         self.par_of_educ_win.tbwClients.setColumnWidth(6, 120)
+        self.par_of_educ_win.tbwClients.clicked.connect(self.fill_info)
+        self.set_option()
 
     def set_option(self):
-        self.par_of_educ_win.toolbShow.setText(self.sender().text())
-        self.par_of_educ_win.lblNumber.setText(f"Number of Clients ({self.sender().text()}): "
-                                               f"{self.par_of_educ_win.tbwClients.rowCount()}")
-        if self.sender().text() == "All":
+        if self.sender().text() != "Participants of Education":
+            self.par_of_educ_win.toolbShow.setText(self.sender().text())
+
+        if self.par_of_educ_win.toolbShow.text() == "All":
             query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} ORDER BY FIRST_NAME;"
-        elif self.sender().text() == "Still in Education":
+        elif self.par_of_educ_win.toolbShow.text() == "Still in Education":
             query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} AND END_DATE IS NULL ORDER BY FIRST_NAME;"
-        elif self.sender().text() == "Education Completed":
+        else:
             query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} AND END_DATE IS NOT NULL ORDER BY FIRST_NAME;"
         clients = Common().db(query, "fetch")
         self.fill_tbw(clients)
+        self.par_of_educ_win.lblNumber.setText(f"Number of Clients ({self.par_of_educ_win.toolbShow.text()}): "
+                                               f"{self.par_of_educ_win.tbwClients.rowCount()}")
 
     def fetch_clients(self):
         query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} ORDER BY FIRST_NAME;"
@@ -66,3 +70,23 @@ class ParOfEduc(QWidget):
             except:
                 end_date = ""
             self.par_of_educ_win.tbwClients.setItem(i, 8, QTableWidgetItem(end_date))
+
+    def fill_info(self):
+        query = f"SELECT * FROM clients WHERE ID = {self.par_of_educ_win.tbwClients.item(self.par_of_educ_win.tbwClients.currentRow(), 0).text()}"
+        client = Common().db(query, "fetch")[0]
+        self.par_of_educ_win.entClientName.setText(f"{client['FIRST_NAME']} {client['LAST_NAME']}")
+        self.par_of_educ_win.entCompany.setText(client["COMPANY"])
+        self.par_of_educ_win.entCompanyPhone.setText(client["COMPANY_PHONE"])
+        self.par_of_educ_win.entEMail.setText(client["MAIL"])
+        self.par_of_educ_win.entAddress.setText(Common().address_format(client["ADDRESS"].split("---")))
+        self.par_of_educ_win.entMobile.setText(client["MOBILE"])
+        self.par_of_educ_win.entOtherPhones.setText(client["OTHER_PHONES"])
+        self.par_of_educ_win.entReference.setText(client["REFERENCE"])
+        ###############      I NEED view_clients FOR THE REST OF THESE:         #################
+        # self.par_of_educ_win.entPetName.setText(client["PET_NAME"])
+        # self.par_of_educ_win.dtDOB.setText(client["PET_DOB"])
+        # self.par_of_educ_win.entGender.setText(client["GENDER"])
+        # self.par_of_educ_win.entPetType.setText(client["TYPE"])
+        # self.par_of_educ_win.entBreed.setText(client["BREED"])
+        # self.par_of_educ_win.entColor.setText(client["COLOR"])
+        # self.par_of_educ_win.entSpecialMark.setText(client["SPECIAL_MARK"])

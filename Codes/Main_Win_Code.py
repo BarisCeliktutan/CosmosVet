@@ -54,6 +54,8 @@ class MainWin(QMainWindow):
                            QMessageBox.Yes | QMessageBox.No).exec_()
         if sure == QMessageBox.No:
             event.ignore()
+        else:
+            exit()
 
 # from turtle import *
 #
@@ -69,3 +71,4 @@ class MainWin(QMainWindow):
 #     if b == 199:
 #         b = 0
 #
+
