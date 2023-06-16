@@ -911,31 +911,6 @@
      <string>Pet Information</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="entDOB">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>62</y>
-      <width>150</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Calibri</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:  rgb(235, 235, 235)</string>
-    </property>
-    <property name="frame">
-     <bool>false</bool>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="entPetName">
     <property name="geometry">
      <rect>
@@ -1275,6 +1250,75 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
+   <widget class="QDateEdit" name="dtDOB">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>62</y>
+      <width>150</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(232, 232, 232);</string>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
+    <property name="wrapping">
+     <bool>false</bool>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="buttonSymbols">
+     <enum>QAbstractSpinBox::NoButtons</enum>
+    </property>
+    <property name="correctionMode">
+     <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+    </property>
+    <property name="keyboardTracking">
+     <bool>true</bool>
+    </property>
+    <property name="currentSection">
+     <enum>QDateTimeEdit::DaySection</enum>
+    </property>
+    <property name="displayFormat">
+     <string>dd MMMM yyyy</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+    <property name="timeSpec">
+     <enum>Qt::LocalTime</enum>
+    </property>
+   </widget>
   </widget>
  </widget>
  <tabstops>
@@ -1290,7 +1334,6 @@
   <tabstop>entReference</tabstop>
   <tabstop>entOtherPhones</tabstop>
   <tabstop>entEMail</tabstop>
-  <tabstop>entDOB</tabstop>
   <tabstop>entPetName</tabstop>
   <tabstop>entBreed</tabstop>
   <tabstop>entGender</tabstop>
