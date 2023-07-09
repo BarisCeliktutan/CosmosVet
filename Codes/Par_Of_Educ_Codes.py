@@ -36,18 +36,18 @@ class ParOfEduc(QWidget):
             self.par_of_educ_win.toolbShow.setText(self.sender().text())
 
         if self.par_of_educ_win.toolbShow.text() == "All":
-            query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} ORDER BY FIRST_NAME;"
+            query = f"SELECT * FROM view_clients WHERE PET_DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} ORDER BY FIRST_NAME;"
         elif self.par_of_educ_win.toolbShow.text() == "Still in Education":
-            query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} AND END_DATE IS NULL ORDER BY FIRST_NAME;"
+            query = f"SELECT * FROM view_clients WHERE PET_DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} AND END_DATE IS NULL ORDER BY FIRST_NAME;"
         else:
-            query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} AND END_DATE IS NOT NULL ORDER BY FIRST_NAME;"
+            query = f"SELECT * FROM view_clients WHERE PET_DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} AND END_DATE IS NOT NULL ORDER BY FIRST_NAME;"
         clients = Common().db(query, "fetch")
         self.fill_tbw(clients)
         self.par_of_educ_win.lblNumber.setText(f"Number of Clients ({self.par_of_educ_win.toolbShow.text()}): "
                                                f"{self.par_of_educ_win.tbwClients.rowCount()}")
 
     def fetch_clients(self):
-        query = f"SELECT * FROM clients WHERE DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} ORDER BY FIRST_NAME;"
+        query = f"SELECT * FROM view_clients WHERE PET_DELETED = 0 AND CLINIC_ID = {self.user['CLINIC_ID']} ORDER BY FIRST_NAME;"
         clients = Common().db(query, "fetch")
         self.fill_tbw(clients)
 
@@ -59,6 +59,7 @@ class ParOfEduc(QWidget):
             self.par_of_educ_win.tbwClients.setItem(i, 2, QTableWidgetItem(clients[i]["COMPANY"]))
             self.par_of_educ_win.tbwClients.setItem(i, 3, QTableWidgetItem(clients[i]["FIRST_NAME"]))
             self.par_of_educ_win.tbwClients.setItem(i, 4, QTableWidgetItem(clients[i]["LAST_NAME"]))
+            self.par_of_educ_win.tbwClients.setItem(i, 5, QTableWidgetItem(clients[i]["PET_NAME"]))
             self.par_of_educ_win.tbwClients.setItem(i, 6, QTableWidgetItem(clients[i]["TYPE_OF_EDUC"]))
             try:
                 start_date = Common().date_format(str(clients[i]["START_DATE"]).split("-"))
@@ -72,7 +73,7 @@ class ParOfEduc(QWidget):
             self.par_of_educ_win.tbwClients.setItem(i, 8, QTableWidgetItem(end_date))
 
     def fill_info(self):
-        query = f"SELECT * FROM clients WHERE ID = {self.par_of_educ_win.tbwClients.item(self.par_of_educ_win.tbwClients.currentRow(), 0).text()}"
+        query = f"SELECT * FROM view_clients WHERE ID = {self.par_of_educ_win.tbwClients.item(self.par_of_educ_win.tbwClients.currentRow(), 0).text()}"
         client = Common().db(query, "fetch")[0]
         self.par_of_educ_win.entClientName.setText(f"{client['FIRST_NAME']} {client['LAST_NAME']}")
         self.par_of_educ_win.entCompany.setText(client["COMPANY"])

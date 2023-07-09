@@ -21,3 +21,7 @@ pyuic5 New_Vaccine.ui -o New_Vaccine_Design.py
 pyuic5 Pet_Add_Edit.ui -o Pet_Add_Edit_Design.py
 
 pyuic5 Add_Type_Breed.ui -o Add_Type_Breed_Design.py
+
+pyuic5 Charges.ui -o Charges_Design.py
+
+pyuic5 Payment.ui -o Payment_Design.py

@@ -26,8 +26,14 @@ class VaccineAddEdit(QDialog):
         self.editing = editing
         self.setWindowTitle("Edit this vaccination") ## fetch also the name of pet!
         self.vac_add_edit_win.entNameofVaccine.setText(editing["VACCINE_NAME"])
-        self.vac_add_edit_win.dtDateOfAppointment.setDate(editing["DATE_OF_APPOINTMENT"])
-        self.vac_add_edit_win.dtDateOfVaccination.setDate(editing["DATE_OF_VACCINED"])
+        try:
+            self.vac_add_edit_win.dtDateOfAppointment.setDate(editing["DATE_OF_APPOINTMENT"])
+        except:
+            pass
+        try:
+            self.vac_add_edit_win.dtDateOfVaccination.setDate(editing["DATE_OF_VACCINED"])
+        except:
+            pass
         self.x = "update"
         self.setStyleSheet("background-color: rgb(255, 165, 0);")
 

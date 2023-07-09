@@ -85,7 +85,6 @@ class Common:
 
     def delete(self, tbw, what, fetch, fetch2):
         try:
-            print(tbw.item(tbw.currentRow(), 0).text())
             sure = QMessageBox(QMessageBox.Question, "Attention", f"Are you sure you want to delete this {what.replace('_', ' ')[:-1]}?", QMessageBox.Yes | QMessageBox.No).exec_()
             if sure == QMessageBox.Yes:
                 query = f"UPDATE {what} SET DELETED = 1, DATE_OF_DELETE = '{datetime.today()}'" \

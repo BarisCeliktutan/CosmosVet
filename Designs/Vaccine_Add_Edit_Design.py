@@ -18,7 +18,7 @@ class Ui_winVaccineAddEdit(object):
         icon = QtGui.QIcon.fromTheme("C:\\Users\\baris\\Desktop\\Projects\\Vet\\Icons\\Cosmos_Vet.ico")
         winVaccineAddEdit.setWindowIcon(icon)
         self.lblDateOfAppointment = QtWidgets.QLabel(winVaccineAddEdit)
-        self.lblDateOfAppointment.setGeometry(QtCore.QRect(38, 50, 145, 20))
+        self.lblDateOfAppointment.setGeometry(QtCore.QRect(38, 52, 145, 20))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
