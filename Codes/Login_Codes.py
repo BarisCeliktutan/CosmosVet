@@ -2,9 +2,10 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 from Designs import Login_Design
-from Codes import Main_Win_Code
+from Codes import Main_Win_Code, Reminder_Code
 from Common_Codes import Common
 from getmac import get_mac_address
+from datetime import datetime
 
 
 class LoginWin(QMainWindow):
@@ -15,6 +16,8 @@ class LoginWin(QMainWindow):
         icon = QtGui.QIcon.fromTheme(str(Common().db("SELECT PATH FROM IMAGES WHERE ID = 1;", "fetch")[0]["PATH"])[2:-1])
         self.setWindowIcon(icon)
         self.flag = 0
+
+        self.reminder_window = Reminder_Code.Reminder()
 
         self.main_window = Main_Win_Code.MainWin()
         self.login_win.btnLogin.clicked.connect(self.login)
@@ -43,8 +46,13 @@ class LoginWin(QMainWindow):
                         mac_code = f", MAC = '{self.user['MAC']}, {self.mac}'"
                     else:
                         mac_code = f", MAC = '{self.mac}'"
+
+            reminder = ""
+            if self.user["REMIND_DATE"] < datetime.today().date():
+                reminder = f", REMIND = 1, REMIND_DATE = '{datetime.today().date()}'"
+
             query = f"UPDATE users SET REMEMBER_ME = {self.login_win.cbRememberMe.isChecked()}{mac_code}, " \
-                    f"LAST_LOGIN = 1 WHERE ID = '{self.user['ID']}'"
+                    f"LAST_LOGIN = 1{reminder} WHERE ID = '{self.user['ID']}'"
             Common().db(query, "commit")
 
             last_login_query = f"UPDATE users SET LAST_LOGIN = 0 WHERE MAC LIKE '%{self.mac}%' AND USER_NAME <> '{user_name}';"
@@ -52,7 +60,14 @@ class LoginWin(QMainWindow):
             Common().user_info(self.user)
             self.main_window.settings()
             self.main_window.show()
+            appointment_check_query = f"SELECT DATE_OF_APPOINTMENT FROM view_clients WHERE CLINIC_ID = {self.user['CLINIC_ID']} AND DATE_OF_APPOINTMENT > '{datetime.today().date()}' AND DATE_OF_VACCINED is NULL;"
+            appointment_check = Common().db(appointment_check_query, "fetch")
             self.hide()
+
+            if len(appointment_check) > 0 and self.user["REMIND"] == 1:
+                self.reminder_window.settings(len(appointment_check), self.user)
+                self.reminder_window.setModal(True)
+                self.reminder_window.exec_()
         except:
             QMessageBox.information(self, "Warning", "Incorrect user name or password.")
 

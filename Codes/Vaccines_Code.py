@@ -33,9 +33,8 @@ class Vaccines(QDialog):
         if len(check) > 1:
             Common().msg("This vaccination is already added!")
         else:
-            include_vac_query = f"INSERT INTO vaccines (VACCINE_NAME, DATE_OF_APPOINTMENT, DATE_OF_VACCINED, PET_ID) VALUES " \
-                                f"('{vac_name}', " \
-                                f"'{datetime.today()}', '{datetime.today()}', {self.pet_id})"
+            include_vac_query = f"INSERT INTO vaccines (VACCINE_NAME, DATE_OF_APPOINTMENT, PET_ID) VALUES " \
+                                f"('{vac_name}', '{datetime.today()}', {self.pet_id})"
             Common().db(include_vac_query, "commit")
             self.close()
 

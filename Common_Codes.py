@@ -73,7 +73,7 @@ class Common:
 
     def edit(self, tbw, win, what, fetch):
         try:
-            query = f"SELECT * FROM {what} WHERE ID ="\
+            query = f"SELECT * FROM {what} WHERE ID =" \
                     f"{tbw.item(tbw.currentRow(), 0).text()};"
             editing = self.db(query, "fetch")[0]
             win.edit(editing)
@@ -114,9 +114,12 @@ class Common:
         message_box.exec()
 
     def save_msg(self):
+
         sure = QMessageBox(QMessageBox.Question, "Attention", "Are you sure you want to save?",
                            QMessageBox.Yes | QMessageBox.No)
         sure.setWindowIcon(QIcon("C:/Users/baris/Desktop/Projects/Vet/Icons/IDEAL_ICON_2.ico"))
         return sure
 
-
+        # x = int(QMessageBox.question(self, "Attention", f"Are you sure you want to save?"))
+        # if x == 16384:
+        #     print("pressed Yes")

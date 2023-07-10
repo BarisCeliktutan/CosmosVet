@@ -15,7 +15,7 @@ class Payment(QDialog):
         self.payment_win.btnSave.clicked.connect(self.save)
 
     def add(self, cl_id):
-        self.cl_id = cl_id[0]
+        self.cl_id = cl_id
         self.payment_win.dtDate.setDate(datetime.today())
         self.payment_win.entDescription.setText("")
         self.payment_win.spinPrice.setValue(0.00)
@@ -42,6 +42,12 @@ class Payment(QDialog):
         description = self.payment_win.entDescription.toPlainText()
         price = self.payment_win.spinPrice.value()
         paid = self.payment_win.spinPaid.value()
+
+        check_query = f"SELECT SUM(CHARGES_PAID) AS CHARGES_PAID, CHARGES_TOTAL from view_charges WHERE CLIENT_ID = {self.cl_id};"
+        check = Common().db(check_query, "fetch")[0]
+        if float(check["CHARGES_PAID"]) + paid > float(check["CHARGES_TOTAL"]) + price:
+            Common().msg("You cannot take more payment than total charges")
+            return
 
         # clinic_id # db only (fetch bosses clinic id)
 

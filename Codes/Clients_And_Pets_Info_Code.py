@@ -97,8 +97,6 @@ class ClientsAndPetsInfo(QWidget):
 
         self.cl_pet_info_win.toolbShow.setMenu(menu)
         self.cl_pet_info_win.toolbShow.setPopupMode(QToolButton.InstantPopup)
-        self.cl_pet_info_win.lblShow.setHidden(True)
-        self.cl_pet_info_win.toolbShow.setHidden(True)
 
     def fetch_id(self, tbw, win, fetch, what):
         try:
@@ -122,11 +120,16 @@ class ClientsAndPetsInfo(QWidget):
             print("Not any client selected")
 
     def fetch_vaccines(self):
-        try:
+        if self.cl_pet_info_win.toolbShow.text() == "All":
             vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} ORDER BY VACCINE_NAME;"
-            vaccines = Common().db(vaccines_query, "fetch")
-        except:
-            vaccines = []
+        elif self.cl_pet_info_win.toolbShow.text() == "Coming Appointments":
+            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} AND DATE_OF_APPOINTMENT >= CURRENT_DATE AND DATE_OF_VACCINED IS NULL ORDER BY VACCINE_NAME;"
+        else:
+            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()}  AND DATE_OF_VACCINED IS NOT NULL ORDER BY VACCINE_NAME;"
+        vaccines = Common().db(vaccines_query, "fetch")
+        # vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} ORDER BY VACCINE_NAME;"
+        # vaccines = Common().db(vaccines_query, "fetch")
+
         self.fill_vaccines(vaccines)
 
     def finder(self):
@@ -156,10 +159,8 @@ class ClientsAndPetsInfo(QWidget):
             self.cl_pet_info_win.tbwClients.setItem(row, 2, QTableWidgetItem(client["FIRST_NAME"]))
             self.cl_pet_info_win.tbwClients.setItem(row, 3, QTableWidgetItem(client["LAST_NAME"]))
         Common().set_number_of(self.cl_pet_info_win.tbwClients, self.cl_pet_info_win.lblNumberofCl, "Clients")
-        self.show_options(0)
 
     def fill_pets(self, pets):
-        self.show_options(0)
         self.cl_pet_info_win.tbwPets.setRowCount(len(pets))
         for row, pet in enumerate(pets):
             self.cl_pet_info_win.tbwPets.setItem(row, 0, QTableWidgetItem(str(pet["ID"])))
@@ -171,7 +172,6 @@ class ClientsAndPetsInfo(QWidget):
 
     def fill_vaccines(self, vaccines):
         self.cl_pet_info_win.tbwVaccines.setRowCount(len(vaccines))
-        self.show_options(len(vaccines))
         for row, vaccine in enumerate(vaccines):
             self.cl_pet_info_win.tbwVaccines.setItem(row, 0, QTableWidgetItem(str(vaccine["ID"])))
             self.cl_pet_info_win.tbwVaccines.setItem(row, 1, QTableWidgetItem(vaccine["VACCINE_NAME"]))
@@ -225,23 +225,11 @@ class ClientsAndPetsInfo(QWidget):
 
     def set_option(self):
         self.cl_pet_info_win.toolbShow.setText(self.sender().text())
-
-        if self.cl_pet_info_win.toolbShow.text() == "All":
-            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} ORDER BY VACCINE_NAME;"
-        elif self.cl_pet_info_win.toolbShow.text() == "Coming Appointments":
-            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} AND DATE_OF_APPOINTMENT >= CURRENT_DATE AND DATE_OF_VACCINED IS NULL ORDER BY VACCINE_NAME;"
-        else:
-            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()}  AND DATE_OF_VACCINED IS NOT NULL ORDER BY VACCINE_NAME;"
-        vaccines = Common().db(vaccines_query, "fetch")
-        self.fill_vaccines(vaccines)
-
-    def show_options(self, isGreater):
-        if isGreater > 0:
-            self.cl_pet_info_win.lblShow.setHidden(False)
-            self.cl_pet_info_win.toolbShow.setHidden(False)
-        else:
-            self.cl_pet_info_win.lblShow.setHidden(True)
-            self.cl_pet_info_win.toolbShow.setHidden(True)
+        try:
+            self.fetch_vaccines()
+        except:
+            Common().msg(f"Please select a pet first.")
+            self.cl_pet_info_win.toolbShow.setText("All")
 
     def charges(self):
         try:
