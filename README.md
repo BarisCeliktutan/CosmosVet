@@ -12,5 +12,5 @@ Appointment Scheduling: Cosmos Vet provides a calendar view where you can easily
 
 Billing and Invoicing: Generate professional invoices and efficiently manage billing for clients. Cosmos Vet can calculate fees based on services provided, medications prescribed, and other factors, making it easier to maintain accurate financial records.
 
-NOTE: This project is still in writing process.
-"#Cosmos Vet Application" 
+NOTE: The complete version is in my private repository for security reasons. Please e-mail me with information about yourself if you want to take a look. My e-mail can be found on my CV or job application.
+
