@@ -12,7 +12,7 @@ class Common:
     def db(self, query, do):
         database = pymysql.connect(host="localhost",
                                    user="root",
-                                   password="Justy1992",
+                                   password="xxxxxxxx",
                                    db="vetdb",
                                    charset="utf8mb4",
                                    cursorclass=pymysql.cursors.DictCursor)
