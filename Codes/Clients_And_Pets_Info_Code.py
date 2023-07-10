@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QMenu, QAction, QToolButton
 from Designs import Clients_And_Pets_Info_Design
-from Codes import Client_Add_Edit_Code, Pet_Add_Edit_Code, Vaccine_Add_Edit_Code, Charges_Code
+from Codes import Client_Add_Edit_Code, Pet_Add_Edit_Code, Vaccine_Add_Edit_Code, Charges_Code, Stock_Code
 from Common_Codes import Common
 from datetime import datetime
 
@@ -64,6 +64,7 @@ class ClientsAndPetsInfo(QWidget):
         self.pet_add_edit_window = Pet_Add_Edit_Code.PetAddEdit()
         self.vaccine_add_edit_window = Vaccine_Add_Edit_Code.VaccineAddEdit()
         self.charges_window = Charges_Code.Charges()
+        self.stock_window = Stock_Code.Stock()
 
         self.cl_pet_info_win.btnClientAdd.clicked.connect(lambda: Common().add(self.cl_add_edit_window, self.fetch_clients, self.user["CLINIC_ID"], ""))
         self.cl_pet_info_win.btnClientEdit.clicked.connect(lambda: Common().edit(self.cl_pet_info_win.tbwClients, self.cl_add_edit_window, "clients", self.fetch_clients))
@@ -86,6 +87,7 @@ class ClientsAndPetsInfo(QWidget):
         self.cl_pet_info_win.tbwPets.clicked.connect(self.fill_pets_frm)
 
         self.cl_pet_info_win.btnCharges.clicked.connect(self.charges)
+        self.cl_pet_info_win.btnStock.clicked.connect(self.stock)
 
         options = ["All", "Coming Appointments", "Past Appointments"]
         menu = QMenu()
@@ -242,3 +244,8 @@ class ClientsAndPetsInfo(QWidget):
             self.fill_cl_frm()
         except:
             Common().msg("Please first select a client.")
+
+    def stock(self):
+        self.stock_window.fetch_stock(self.user["CLINIC_ID"])
+        self.stock_window.setModal(True)
+        self.stock_window.exec_()

@@ -2607,6 +2607,32 @@ vaccination
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnStock">
+   <property name="geometry">
+    <rect>
+     <x>1776</x>
+     <y>892</y>
+     <width>120</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Check Stock</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="C:\Users\baris\Desktop\Projects\Vet\Icons\stock.png">
+     <normaloff>../Icons/stock.png</normaloff>../Icons/stock.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>100</width>
+     <height>100</height>
+    </size>
+   </property>
+  </widget>
  </widget>
  <tabstops>
   <tabstop>entCompanyName</tabstop>

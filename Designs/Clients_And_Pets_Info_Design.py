@@ -982,6 +982,13 @@ class Ui_winClientsPetsInfo(object):
         self.lblShow.setStyleSheet("color: rgb(74, 98, 255)")
         self.lblShow.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.lblShow.setObjectName("lblShow")
+        self.btnStock = QtWidgets.QPushButton(winClientsPetsInfo)
+        self.btnStock.setGeometry(QtCore.QRect(1776, 892, 120, 120))
+        self.btnStock.setText("")
+        icon = QtGui.QIcon.fromTheme("C:\\Users\\baris\\Desktop\\Projects\\Vet\\Icons\\stock.png")
+        self.btnStock.setIcon(icon)
+        self.btnStock.setIconSize(QtCore.QSize(100, 100))
+        self.btnStock.setObjectName("btnStock")
 
         self.retranslateUi(winClientsPetsInfo)
         QtCore.QMetaObject.connectSlotsByName(winClientsPetsInfo)
@@ -1099,3 +1106,4 @@ class Ui_winClientsPetsInfo(object):
         self.btnVaccineEdit.setToolTip(_translate("winClientsPetsInfo", "Edit this vaccination record"))
         self.toolbShow.setText(_translate("winClientsPetsInfo", "All"))
         self.lblShow.setText(_translate("winClientsPetsInfo", "Show"))
+        self.btnStock.setToolTip(_translate("winClientsPetsInfo", "Check Stock"))
