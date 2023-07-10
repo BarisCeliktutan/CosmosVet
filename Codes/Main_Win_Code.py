@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QApplication, QTableWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from PyQt5 import QtGui
 from Designs import Main_Win_Design
 from Codes import Users_Codes, Par_Of_Educ_Codes, Clients_And_Pets_Info_Code

@@ -1,8 +1,7 @@
-from PyQt5.QtWidgets import QWidget, QMessageBox, QAction, QMenu, QToolButton, QTableWidgetItem
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QWidget, QAction, QMenu, QToolButton, QTableWidgetItem
+from PyQt5 import QtGui
 from Designs import Par_Of_Educ_Design
 from Common_Codes import Common
-from datetime import datetime
 
 
 class ParOfEduc(QWidget):

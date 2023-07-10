@@ -1,9 +1,8 @@
-from PyQt5.QtWidgets import QWidget, QMessageBox, QCheckBox, QTableWidgetItem
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QWidget, QCheckBox, QTableWidgetItem
+from PyQt5 import QtGui
 from Designs import Users_Design
 from Codes import User_Add_Edit_Codes
 from Common_Codes import Common
-from datetime import datetime
 
 
 class Users(QWidget):

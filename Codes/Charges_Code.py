@@ -1,9 +1,8 @@
-from PyQt5.QtWidgets import QDialog, QMessageBox, QAction, QMenu, QToolButton, QTableWidgetItem
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QDialog, QTableWidgetItem
+from PyQt5 import QtCore
 from Designs import Charges_Design
 from Codes import Payment_Code
 from Common_Codes import Common
-from datetime import datetime
 
 
 class Charges(QDialog):

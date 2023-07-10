@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QDialog, QMessageBox, QAction, QMenu, QToolButton
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5 import QtCore
 from Designs import New_Vaccine_Design
 from Common_Codes import Common
 from datetime import datetime
@@ -14,8 +14,8 @@ class NewVaccine(QDialog):
 
         self.new_vac_win.btnSave.clicked.connect(self.save)
 
-    def add(self, vac_id):
-        self.vac_id = vac_id
+    def add(self, cl_id):
+        self.cl_id = cl_id
         self.setWindowTitle("Add a New Vaccine")
         self.new_vac_win.entNameofVaccine.setText("")
         self.new_vac_win.entSerialNumber.setText("")
@@ -49,9 +49,9 @@ class NewVaccine(QDialog):
                            QMessageBox.Yes | QMessageBox.No).exec_()
         if sure == QMessageBox.Yes:
             if self.x == "add":
-                query = f"INSERT INTO vaccine_types (VACCINE_NAME, SERIAL_NUMBER, EXPIRY_DATE, QUANTITY, PERIOD) "\
+                query = f"INSERT INTO vaccine_types (VACCINE_NAME, SERIAL_NUMBER, EXPIRY_DATE, QUANTITY, PERIOD, CLINIC_ID) "\
                         f"VALUES ('{vaccine_name}', '{serial_number}', '{expiry_date}', '{quantity}', " \
-                        f"'{period}')"
+                        f"'{period}', {self.cl_id})"
             else:
                 query = f"UPDATE vaccine_types SET VACCINE_NAME = '{vaccine_name}', SERIAL_NUMBER = '{serial_number}', "\
                         f"EXPIRY_DATE = '{expiry_date}', QUANTITY = '{quantity}', PERIOD = '{period}' " \

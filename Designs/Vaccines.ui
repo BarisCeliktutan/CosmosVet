@@ -14,13 +14,13 @@
    <string>Vaccines</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(25, 150, 255);
+   <string notr="true">background-color: rgb(220, 220, 220);
 </string>
   </property>
   <widget class="QPushButton" name="btnVaccineDelete">
    <property name="geometry">
     <rect>
-     <x>326</x>
+     <x>318</x>
      <y>452</y>
      <width>50</width>
      <height>50</height>
@@ -52,7 +52,7 @@
   <widget class="QPushButton" name="btnVaccineEdit">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>262</x>
      <y>452</y>
      <width>50</width>
      <height>50</height>
@@ -97,7 +97,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(25, 150, 255);
+    <string notr="true">background-color: rgb(220, 220, 220);
 color: rgb(52, 17, 200);</string>
    </property>
    <property name="editTriggers">
@@ -294,7 +294,7 @@ color: rgb(52, 17, 200);</string>
   <widget class="QPushButton" name="btnVaccineAdd">
    <property name="geometry">
     <rect>
-     <x>218</x>
+     <x>210</x>
      <y>452</y>
      <width>50</width>
      <height>50</height>
@@ -314,6 +314,38 @@ vaccination
    <property name="icon">
     <iconset theme="C:/Users/baris/Desktop/Projects/Vet/Icons/add_vaccine.png">
      <normaloff>../Icons/add_vaccine.png</normaloff>../Icons/add_vaccine.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnSelect">
+   <property name="geometry">
+    <rect>
+     <x>374</x>
+     <y>452</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Select this vaccine</string>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="C:\Users\baris\Desktop\Projects\Vet\Icons\select.png">
+     <normaloff>../Icons/select.png</normaloff>../Icons/select.png</iconset>
    </property>
    <property name="iconSize">
     <size>

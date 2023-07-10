@@ -1,9 +1,8 @@
-from PyQt5.QtWidgets import QDialog, QMessageBox, QAction, QMenu, QToolButton, QTableWidgetItem
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QDialog, QTableWidgetItem
+from PyQt5 import QtCore
 from Designs import Vaccines_Design
 from Codes import New_Vaccine_Code
 from Common_Codes import Common
-from datetime import datetime
 
 
 class Vaccines(QDialog):
@@ -15,28 +14,33 @@ class Vaccines(QDialog):
 
         self.new_vac_window = New_Vaccine_Code.NewVaccine()
 
-        self.vac_win.tbwVaccines.doubleClicked.connect(self.include)
+        self.vac_win.tbwVaccines.setColumnHidden(0, True)  # -17
+        self.vac_win.tbwVaccines.setColumnWidth(1, 221)
+        self.vac_win.tbwVaccines.setColumnWidth(2, 111)
+        self.vac_win.tbwVaccines.setColumnWidth(3, 96)
+        self.vac_win.tbwVaccines.setColumnWidth(4, 71)
+        self.vac_win.tbwVaccines.setColumnWidth(5, 106)
 
-        self.vac_win.btnVaccineAdd.clicked.connect(lambda: Common().add(self.new_vac_window, self.fill_vac, self.pet_id, "vaccines"))
+
+        self.vac_win.btnSelect.clicked.connect(self.select)
+        self.vac_win.tbwVaccines.doubleClicked.connect(self.select)
+
+        self.vac_win.btnVaccineAdd.clicked.connect(lambda: Common().add(self.new_vac_window, self.fill_vac, self.cl_id, "vaccine_types"))
         self.vac_win.btnVaccineEdit.clicked.connect(lambda: Common().edit(self.vac_win.tbwVaccines, self.new_vac_window, "vaccine_types", self.fill_vac))
         self.vac_win.btnVaccineDelete.clicked.connect(lambda: Common().delete(self.vac_win.tbwVaccines, "vaccine_types", self.fill_vac, ""))
 
-    def add(self, ids):
-        self.pet_id = ids[0]
-        self.cl_id = ids[1]
+    def settings(self, cl_id):
+        self.flag = False
+        self.cl_id = cl_id
         self.fill_vac()
 
-    def include(self):
-        vac_name = self.vac_win.tbwVaccines.item(self.vac_win.tbwVaccines.currentRow(), 1).text()
-        check_query = f"SELECT * FROM vaccines WHERE VACCINE_NAME = '{vac_name}' AND DELETED = 0"
-        check = Common().db(check_query, "fetch")
-        if len(check) > 1:
-            Common().msg("This vaccination is already added!")
-        else:
-            include_vac_query = f"INSERT INTO vaccines (VACCINE_NAME, DATE_OF_APPOINTMENT, PET_ID) VALUES " \
-                                f"('{vac_name}', '{datetime.today()}', {self.pet_id})"
-            Common().db(include_vac_query, "commit")
-            self.close()
+    def select(self):
+        self.flag = True
+        self.hide()
+
+    def fill_vaccine_name(self):
+        return self.vac_win.tbwVaccines.item(self.vac_win.tbwVaccines.currentRow(), 0).text(),\
+               self.vac_win.tbwVaccines.item(self.vac_win.tbwVaccines.currentRow(), 1).text(), self.flag
 
     def fill_vac(self):
         vaccines_query = f"SELECT * FROM vaccine_types WHERE DELETED = 0"
@@ -50,6 +54,3 @@ class Vaccines(QDialog):
             self.vac_win.tbwVaccines.setItem(row, 3, QTableWidgetItem(expiry_date))
             self.vac_win.tbwVaccines.setItem(row, 4, QTableWidgetItem(str(vac["QUANTITY"])))
             self.vac_win.tbwVaccines.setItem(row, 5, QTableWidgetItem(str(vac["PERIOD"])))
-
-
-

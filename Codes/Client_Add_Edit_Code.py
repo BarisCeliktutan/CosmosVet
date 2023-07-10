@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QDialog, QMessageBox, QAction, QMenu, QToolButton
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QDialog, QMessageBox, QToolButton
+from PyQt5 import QtCore
 from Designs import Client_Add_Edit_Design
 from Common_Codes import Common
 from datetime import datetime

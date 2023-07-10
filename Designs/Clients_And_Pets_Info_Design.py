@@ -18,14 +18,14 @@ class Ui_winClientsPetsInfo(object):
         icon = QtGui.QIcon.fromTheme("C:\\Users\\baris\\Desktop\\Projects\\Vet\\Icons\\Cosmos_Vet.ico")
         winClientsPetsInfo.setWindowIcon(icon)
         winClientsPetsInfo.setToolTip("")
-        winClientsPetsInfo.setStyleSheet("background-color: rgb(168, 223, 50);")
+        winClientsPetsInfo.setStyleSheet("background-color: rgb(245, 244, 202)")
         self.tbwClients = QtWidgets.QTableWidget(winClientsPetsInfo)
         self.tbwClients.setGeometry(QtCore.QRect(352, 20, 460, 275))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
         self.tbwClients.setFont(font)
-        self.tbwClients.setStyleSheet("background-color: rgb(124, 255, 230);\n"
+        self.tbwClients.setStyleSheet("background-color:rgb(181, 223, 225);\n"
 "color: rgb(54, 42, 226)")
         self.tbwClients.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tbwClients.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
@@ -80,7 +80,7 @@ class Ui_winClientsPetsInfo(object):
         self.tbwClients.setHorizontalHeaderItem(3, item)
         self.frmClInfo = QtWidgets.QFrame(winClientsPetsInfo)
         self.frmClInfo.setGeometry(QtCore.QRect(822, 20, 1085, 275))
-        self.frmClInfo.setStyleSheet("background-color: rgb(168, 205, 50);")
+        self.frmClInfo.setStyleSheet("background-color: rgb(136, 205, 124)")
         self.frmClInfo.setFrameShape(QtWidgets.QFrame.WinPanel)
         self.frmClInfo.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frmClInfo.setObjectName("frmClInfo")
@@ -457,7 +457,7 @@ class Ui_winClientsPetsInfo(object):
         self.lblChargesLeft.setObjectName("lblChargesLeft")
         self.frmSearch = QtWidgets.QFrame(winClientsPetsInfo)
         self.frmSearch.setGeometry(QtCore.QRect(10, 78, 333, 211))
-        self.frmSearch.setStyleSheet("background-color: rgb(168, 230, 50);")
+        self.frmSearch.setStyleSheet("background-color: rgb(175, 231, 132)")
         self.frmSearch.setFrameShape(QtWidgets.QFrame.Box)
         self.frmSearch.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.frmSearch.setObjectName("frmSearch")
@@ -547,7 +547,7 @@ class Ui_winClientsPetsInfo(object):
         font.setFamily("Calibri")
         font.setPointSize(12)
         self.tbwPets.setFont(font)
-        self.tbwPets.setStyleSheet("background-color: rgb(25, 213, 255);\n"
+        self.tbwPets.setStyleSheet("background-color: rgb(156, 228, 231);\n"
 "color: rgb(54, 42, 226);")
         self.tbwPets.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tbwPets.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
@@ -602,7 +602,7 @@ class Ui_winClientsPetsInfo(object):
         self.tbwPets.setHorizontalHeaderItem(3, item)
         self.frmClInfo_2 = QtWidgets.QFrame(winClientsPetsInfo)
         self.frmClInfo_2.setGeometry(QtCore.QRect(482, 340, 1425, 275))
-        self.frmClInfo_2.setStyleSheet("background-color:rgb(255, 185, 44)")
+        self.frmClInfo_2.setStyleSheet("background-color: rgb(255, 211, 133)")
         self.frmClInfo_2.setFrameShape(QtWidgets.QFrame.WinPanel)
         self.frmClInfo_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frmClInfo_2.setObjectName("frmClInfo_2")
@@ -880,7 +880,7 @@ class Ui_winClientsPetsInfo(object):
         font.setFamily("Calibri")
         font.setPointSize(12)
         self.tbwVaccines.setFont(font)
-        self.tbwVaccines.setStyleSheet("background-color: rgb(25, 150, 255);\n"
+        self.tbwVaccines.setStyleSheet("background-color: rgb(220, 220, 220);\n"
 "color: rgb(52, 17, 200);")
         self.tbwVaccines.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tbwVaccines.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)

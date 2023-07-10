@@ -27,3 +27,5 @@ pyuic5 Charges.ui -o Charges_Design.py
 pyuic5 Payment.ui -o Payment_Design.py
 
 pyuic5 Reminder.ui -o Reminder_Design.py
+
+pyuic5 Appointments.ui -o Appointments_Design.py

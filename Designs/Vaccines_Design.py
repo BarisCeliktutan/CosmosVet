@@ -15,10 +15,10 @@ class Ui_winVaccines(object):
     def setupUi(self, winVaccines):
         winVaccines.setObjectName("winVaccines")
         winVaccines.resize(621, 510)
-        winVaccines.setStyleSheet("background-color: rgb(25, 150, 255);\n"
+        winVaccines.setStyleSheet("background-color: rgb(220, 220, 220);\n"
 "")
         self.btnVaccineDelete = QtWidgets.QPushButton(winVaccines)
-        self.btnVaccineDelete.setGeometry(QtCore.QRect(326, 452, 50, 50))
+        self.btnVaccineDelete.setGeometry(QtCore.QRect(318, 452, 50, 50))
         self.btnVaccineDelete.setStatusTip("")
         self.btnVaccineDelete.setText("")
         icon = QtGui.QIcon.fromTheme("C:\\Users\\baris\\Desktop\\Projects\\Vet\\Icons\\Delete.png")
@@ -27,7 +27,7 @@ class Ui_winVaccines(object):
         self.btnVaccineDelete.setFlat(True)
         self.btnVaccineDelete.setObjectName("btnVaccineDelete")
         self.btnVaccineEdit = QtWidgets.QPushButton(winVaccines)
-        self.btnVaccineEdit.setGeometry(QtCore.QRect(270, 452, 50, 50))
+        self.btnVaccineEdit.setGeometry(QtCore.QRect(262, 452, 50, 50))
         self.btnVaccineEdit.setStatusTip("")
         self.btnVaccineEdit.setText("")
         icon = QtGui.QIcon.fromTheme("C:\\Users\\baris\\Desktop\\Projects\\Vet\\Icons\\Edit.png")
@@ -41,7 +41,7 @@ class Ui_winVaccines(object):
         font.setFamily("Calibri")
         font.setPointSize(12)
         self.tbwVaccines.setFont(font)
-        self.tbwVaccines.setStyleSheet("background-color: rgb(25, 150, 255);\n"
+        self.tbwVaccines.setStyleSheet("background-color: rgb(220, 220, 220);\n"
 "color: rgb(52, 17, 200);")
         self.tbwVaccines.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.tbwVaccines.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
@@ -121,7 +121,7 @@ class Ui_winVaccines(object):
         item.setForeground(brush)
         self.tbwVaccines.setHorizontalHeaderItem(5, item)
         self.btnVaccineAdd = QtWidgets.QPushButton(winVaccines)
-        self.btnVaccineAdd.setGeometry(QtCore.QRect(218, 452, 50, 50))
+        self.btnVaccineAdd.setGeometry(QtCore.QRect(210, 452, 50, 50))
         self.btnVaccineAdd.setStatusTip("")
         self.btnVaccineAdd.setText("")
         icon = QtGui.QIcon.fromTheme("C:/Users/baris/Desktop/Projects/Vet/Icons/add_vaccine.png")
@@ -129,6 +129,15 @@ class Ui_winVaccines(object):
         self.btnVaccineAdd.setIconSize(QtCore.QSize(40, 40))
         self.btnVaccineAdd.setFlat(True)
         self.btnVaccineAdd.setObjectName("btnVaccineAdd")
+        self.btnSelect = QtWidgets.QPushButton(winVaccines)
+        self.btnSelect.setGeometry(QtCore.QRect(374, 452, 50, 50))
+        self.btnSelect.setStatusTip("")
+        self.btnSelect.setText("")
+        icon = QtGui.QIcon.fromTheme("C:\\Users\\baris\\Desktop\\Projects\\Vet\\Icons\\select.png")
+        self.btnSelect.setIcon(icon)
+        self.btnSelect.setIconSize(QtCore.QSize(40, 40))
+        self.btnSelect.setFlat(True)
+        self.btnSelect.setObjectName("btnSelect")
 
         self.retranslateUi(winVaccines)
         QtCore.QMetaObject.connectSlotsByName(winVaccines)
@@ -153,3 +162,4 @@ class Ui_winVaccines(object):
         self.btnVaccineAdd.setToolTip(_translate("winVaccines", " Add a new\n"
 "vaccination\n"
 " to this pet"))
+        self.btnSelect.setToolTip(_translate("winVaccines", "Select this vaccine"))

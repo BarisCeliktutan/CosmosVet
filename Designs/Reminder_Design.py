@@ -15,6 +15,7 @@ class Ui_winApporachingAppointments(object):
     def setupUi(self, winApporachingAppointments):
         winApporachingAppointments.setObjectName("winApporachingAppointments")
         winApporachingAppointments.resize(348, 136)
+        winApporachingAppointments.setStyleSheet("background-color: rgb(232, 224, 189);")
         self.lblMsg = QtWidgets.QLabel(winApporachingAppointments)
         self.lblMsg.setGeometry(QtCore.QRect(42, 18, 267, 37))
         font = QtGui.QFont()
@@ -23,7 +24,7 @@ class Ui_winApporachingAppointments(object):
         font.setBold(True)
         font.setWeight(75)
         self.lblMsg.setFont(font)
-        self.lblMsg.setStyleSheet("color: rgb(58, 84, 255)")
+        self.lblMsg.setStyleSheet("color: rgb(255, 174, 61);")
         self.lblMsg.setAlignment(QtCore.Qt.AlignCenter)
         self.lblMsg.setObjectName("lblMsg")
         self.btnYes = QtWidgets.QPushButton(winApporachingAppointments)
@@ -32,7 +33,8 @@ class Ui_winApporachingAppointments(object):
         font.setFamily("Britannic Bold")
         font.setPointSize(12)
         self.btnYes.setFont(font)
-        self.btnYes.setStyleSheet("background-color: rgb(82, 255, 2);")
+        self.btnYes.setStyleSheet("background-color: rgb(125, 203, 52);\n"
+"color: rgb(82, 67, 42);")
         self.btnYes.setObjectName("btnYes")
         self.btnNo = QtWidgets.QPushButton(winApporachingAppointments)
         self.btnNo.setGeometry(QtCore.QRect(178, 100, 50, 21))
@@ -41,7 +43,7 @@ class Ui_winApporachingAppointments(object):
         font.setPointSize(12)
         self.btnNo.setFont(font)
         self.btnNo.setStyleSheet("background-color:rgb(236, 0, 0);\n"
-"")
+"color: rgb(82, 67, 42);")
         self.btnNo.setObjectName("btnNo")
         self.cbRemind = QtWidgets.QCheckBox(winApporachingAppointments)
         self.cbRemind.setGeometry(QtCore.QRect(56, 66, 229, 19))
@@ -49,6 +51,7 @@ class Ui_winApporachingAppointments(object):
         font.setFamily("Calibri")
         font.setPointSize(11)
         self.cbRemind.setFont(font)
+        self.cbRemind.setStyleSheet("color: rgb(71, 0, 0);")
         self.cbRemind.setObjectName("cbRemind")
 
         self.retranslateUi(winApporachingAppointments)
@@ -56,8 +59,8 @@ class Ui_winApporachingAppointments(object):
 
     def retranslateUi(self, winApporachingAppointments):
         _translate = QtCore.QCoreApplication.translate
-        winApporachingAppointments.setWindowTitle(_translate("winApporachingAppointments", "Apporaching Appointments"))
-        self.lblMsg.setText(_translate("winApporachingAppointments", "You have \"0\" approaching appointments.\n"
+        winApporachingAppointments.setWindowTitle(_translate("winApporachingAppointments", "Coming Appointments"))
+        self.lblMsg.setText(_translate("winApporachingAppointments", "You have \"0\" coming appointments.\n"
 "Do you want to see them?"))
         self.btnYes.setText(_translate("winApporachingAppointments", "YES"))
         self.btnNo.setText(_translate("winApporachingAppointments", "NO"))

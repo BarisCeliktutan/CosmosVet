@@ -1,7 +1,6 @@
-from PyQt5.QtWidgets import QWidget, QMessageBox, QTableWidgetItem, QMenu, QAction, QToolButton
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import QWidget, QTableWidgetItem, QMenu, QAction, QToolButton
 from Designs import Clients_And_Pets_Info_Design
-from Codes import Client_Add_Edit_Code, Pet_Add_Edit_Code, Vaccines_Code, Vaccine_Add_Edit_Code, Charges_Code
+from Codes import Client_Add_Edit_Code, Pet_Add_Edit_Code, Vaccine_Add_Edit_Code, Charges_Code
 from Common_Codes import Common
 from datetime import datetime
 
@@ -63,7 +62,6 @@ class ClientsAndPetsInfo(QWidget):
 
         self.cl_add_edit_window = Client_Add_Edit_Code.ClientAddEdit()
         self.pet_add_edit_window = Pet_Add_Edit_Code.PetAddEdit()
-        self.vaccines_window = Vaccines_Code.Vaccines()
         self.vaccine_add_edit_window = Vaccine_Add_Edit_Code.VaccineAddEdit()
         self.charges_window = Charges_Code.Charges()
 
@@ -75,8 +73,9 @@ class ClientsAndPetsInfo(QWidget):
         self.cl_pet_info_win.btnPetEdit.clicked.connect(lambda: Common().edit(self.cl_pet_info_win.tbwPets, self.pet_add_edit_window, "pets", self.fetch_pets))
         self.cl_pet_info_win.btnPetDelete.clicked.connect(lambda: Common().delete(self.cl_pet_info_win.tbwPets, "pets", self.fetch_pets, ""))
 
-        self.cl_pet_info_win.btnVaccines.clicked.connect(lambda: self.fetch_id(self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0), self.vaccines_window, self.fetch_vaccines, "pet"))
+        self.cl_pet_info_win.btnVaccines.clicked.connect(lambda: self.fetch_id(self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0), self.vaccine_add_edit_window, self.fetch_vaccines, "pet"))
         self.cl_pet_info_win.btnVaccineEdit.clicked.connect(lambda: Common().edit(self.cl_pet_info_win.tbwVaccines, self.vaccine_add_edit_window, "vaccines", self.fetch_vaccines))
+        self.cl_pet_info_win.tbwVaccines.doubleClicked.connect(lambda: Common().edit(self.cl_pet_info_win.tbwVaccines, self.vaccine_add_edit_window, "vaccines", self.fetch_vaccines))
         self.cl_pet_info_win.btnVaccineDelete.clicked.connect(lambda: Common().delete(self.cl_pet_info_win.tbwVaccines, "vaccines", self.fetch_vaccines, ""))
 
         self.cl_pet_info_win.tbwClients.clicked.connect(self.fill_cl_frm)
@@ -120,15 +119,16 @@ class ClientsAndPetsInfo(QWidget):
             print("Not any client selected")
 
     def fetch_vaccines(self):
-        if self.cl_pet_info_win.toolbShow.text() == "All":
-            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} ORDER BY VACCINE_NAME;"
-        elif self.cl_pet_info_win.toolbShow.text() == "Coming Appointments":
-            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} AND DATE_OF_APPOINTMENT >= CURRENT_DATE AND DATE_OF_VACCINED IS NULL ORDER BY VACCINE_NAME;"
-        else:
-            vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()}  AND DATE_OF_VACCINED IS NOT NULL ORDER BY VACCINE_NAME;"
-        vaccines = Common().db(vaccines_query, "fetch")
-        # vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} ORDER BY VACCINE_NAME;"
-        # vaccines = Common().db(vaccines_query, "fetch")
+        try:
+            if self.cl_pet_info_win.toolbShow.text() == "All":
+                vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} ORDER BY VACCINE_NAME;"
+            elif self.cl_pet_info_win.toolbShow.text() == "Coming Appointments":
+                vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()} AND DATE_OF_APPOINTMENT >= CURRENT_DATE AND DATE_OF_VACCINED IS NULL ORDER BY VACCINE_NAME;"
+            else:
+                vaccines_query = f"SELECT * FROM vaccines WHERE DELETED = 0 AND PET_ID = {self.cl_pet_info_win.tbwPets.item(self.cl_pet_info_win.tbwPets.currentRow(), 0).text()}  AND DATE_OF_VACCINED IS NOT NULL ORDER BY VACCINE_NAME;"
+            vaccines = Common().db(vaccines_query, "fetch")
+        except:
+            vaccines = []
 
         self.fill_vaccines(vaccines)
 

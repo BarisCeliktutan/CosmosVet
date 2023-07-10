@@ -17,7 +17,7 @@
    <iconset theme="C:\Users\baris\Desktop\Projects\Vet\Icons\Cosmos_Vet.ico">
     <normaloff>../Icons/Cosmos_Vet.ico</normaloff>../Icons/Cosmos_Vet.ico</iconset>
   </property>
-  <widget class="QLabel" name="lblDateOfAppointment">
+  <widget class="QLabel" name="lblDateOAppointment">
    <property name="geometry">
     <rect>
      <x>38</x>
@@ -133,7 +133,7 @@ color: rgb(74, 74, 74);</string>
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);
+    <string notr="true">background-color: rgb(232, 232, 232);
 color: rgb(74, 74, 74);</string>
    </property>
    <property name="locale">
@@ -194,7 +194,7 @@ color: rgb(74, 74, 74);</string>
     <rect>
      <x>190</x>
      <y>24</y>
-     <width>250</width>
+     <width>219</width>
      <height>20</height>
     </rect>
    </property>
@@ -206,6 +206,9 @@ color: rgb(74, 74, 74);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="lblNameofVaccine">
@@ -266,6 +269,39 @@ color: rgb(74, 74, 74);</string>
    </property>
    <property name="flat">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cbDateOfVaccination">
+   <property name="geometry">
+    <rect>
+     <x>198</x>
+     <y>84</y>
+     <width>21</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(232, 232, 232);
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="btnNameofVaccine">
+   <property name="geometry">
+    <rect>
+     <x>414</x>
+     <y>23</y>
+     <width>27</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>...</string>
    </property>
   </widget>
  </widget>

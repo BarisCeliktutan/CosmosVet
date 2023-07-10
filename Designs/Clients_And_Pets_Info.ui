@@ -21,7 +21,7 @@
    <string/>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(168, 223, 50);</string>
+   <string notr="true">background-color: rgb(245, 244, 202)</string>
   </property>
   <widget class="QTableWidget" name="tbwClients">
    <property name="geometry">
@@ -39,7 +39,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(124, 255, 230);
+    <string notr="true">background-color:rgb(181, 223, 225);
 color: rgb(54, 42, 226)</string>
    </property>
    <property name="editTriggers">
@@ -179,7 +179,7 @@ color: rgb(54, 42, 226)</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(168, 205, 50);</string>
+    <string notr="true">background-color: rgb(136, 205, 124)</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::WinPanel</enum>
@@ -1185,7 +1185,7 @@ color: rgb(30, 30, 86);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(168, 230, 50);</string>
+    <string notr="true">background-color: rgb(175, 231, 132)</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::Box</enum>
@@ -1420,7 +1420,7 @@ color: rgb(30, 30, 86);</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(25, 213, 255);
+    <string notr="true">background-color: rgb(156, 228, 231);
 color: rgb(54, 42, 226);</string>
    </property>
    <property name="editTriggers">
@@ -1560,7 +1560,7 @@ color: rgb(54, 42, 226);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgb(255, 185, 44)</string>
+    <string notr="true">background-color: rgb(255, 211, 133)</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::WinPanel</enum>
@@ -2318,7 +2318,7 @@ this client</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(25, 150, 255);
+    <string notr="true">background-color: rgb(220, 220, 220);
 color: rgb(52, 17, 200);</string>
    </property>
    <property name="editTriggers">

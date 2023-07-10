@@ -52,7 +52,7 @@ class LoginWin(QMainWindow):
                 reminder = f", REMIND = 1, REMIND_DATE = '{datetime.today().date()}'"
 
             query = f"UPDATE users SET REMEMBER_ME = {self.login_win.cbRememberMe.isChecked()}{mac_code}, " \
-                    f"LAST_LOGIN = 1{reminder} WHERE ID = '{self.user['ID']}'"
+                    f"LAST_LOGIN = 1{reminder} WHERE ID = '{self.user['ID']}' AND MAC LIKE '%{self.user['MAC']}%'"
             Common().db(query, "commit")
 
             last_login_query = f"UPDATE users SET LAST_LOGIN = 0 WHERE MAC LIKE '%{self.mac}%' AND USER_NAME <> '{user_name}';"
@@ -60,12 +60,16 @@ class LoginWin(QMainWindow):
             Common().user_info(self.user)
             self.main_window.settings()
             self.main_window.show()
-            appointment_check_query = f"SELECT DATE_OF_APPOINTMENT FROM view_clients WHERE CLINIC_ID = {self.user['CLINIC_ID']} AND DATE_OF_APPOINTMENT > '{datetime.today().date()}' AND DATE_OF_VACCINED is NULL;"
+
+            appointment_check_query = f"SELECT ID, FIRST_NAME, LAST_NAME, PET_NAME, VACCINE_NAME, DATE_OF_APPOINTMENT "\
+                                      f"FROM view_clients WHERE CLINIC_ID = {self.user['CLINIC_ID']} "\
+                                      f"AND DATE_OF_APPOINTMENT > CURDATE() AND DATE_OF_APPOINTMENT" \
+                                      f"<= DATE_ADD(CURDATE(), INTERVAL 7 DAY) AND DATE_OF_VACCINED is NULL;"
             appointment_check = Common().db(appointment_check_query, "fetch")
             self.hide()
 
             if len(appointment_check) > 0 and self.user["REMIND"] == 1:
-                self.reminder_window.settings(len(appointment_check), self.user)
+                self.reminder_window.settings(appointment_check, self.user)
                 self.reminder_window.setModal(True)
                 self.reminder_window.exec_()
         except:
