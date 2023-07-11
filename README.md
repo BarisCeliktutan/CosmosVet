@@ -1,4 +1,7 @@
 # Cosmos Vet
+
+##NOTE: The complete version is in my private repository for security reasons. Please e-mail me with information about yourself if you want to take a look. My e-mail can be found on my CV or job application.
+
 This program provides several key features to help veterinary clinic owners manage their clinic efficiently.
 
 ## Features
@@ -11,6 +14,4 @@ Stock Control: User can manage clinic's inventory effortlessly. Keep track of me
 Appointment Scheduling: Cosmos Vet provides a calendar view where you can easily schedule appointments, manage conflicts, and send automated reminders to clients.
 
 Billing and Invoicing: Generate professional invoices and efficiently manage billing for clients. Cosmos Vet can calculate fees based on services provided, medications prescribed, and other factors, making it easier to maintain accurate financial records.
-
-NOTE: The complete version is in my private repository for security reasons. Please e-mail me with information about yourself if you want to take a look. My e-mail can be found on my CV or job application.
 
