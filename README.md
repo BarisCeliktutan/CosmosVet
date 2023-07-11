@@ -1,6 +1,6 @@
 # Cosmos Vet
 
-##NOTE: The complete version is in my private repository for security reasons. Please e-mail me with information about yourself if you want to take a look. My e-mail can be found on my CV or job application.
+## NOTE: The complete version is in my private repository for security reasons. Please e-mail me with information about yourself if you want to take a look. My e-mail can be found on my CV or job application.
 
 This program provides several key features to help veterinary clinic owners manage their clinic efficiently.
 
