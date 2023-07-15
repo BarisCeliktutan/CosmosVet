@@ -50,25 +50,8 @@ class MainWin(QMainWindow):
         self.setWindowTitle(f"Cosmos Vet - {self.user['FIRST_NAME']} {self.user['LAST_NAME']}")
 
     def closeEvent(self, event):
-        sure = QMessageBox(QMessageBox.Question, "Attention", "Are you sure you want to quit?",
-                           QMessageBox.Yes | QMessageBox.No).exec_()
+        sure = QMessageBox.question(self, "Attention", "Are you sure you want to quit?")
         if sure == QMessageBox.No:
             event.ignore()
         else:
             exit()
-
-# from turtle import *
-#
-# color('red')
-# bgcolor('black')
-# speed(144)
-# hideturtle()
-# b = 0
-# while b < 200:
-#     right(b)
-#     forward(b*3)
-#     b += 1
-#     if b == 199:
-#         b = 0
-#
-
